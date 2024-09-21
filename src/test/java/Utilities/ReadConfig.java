@@ -8,7 +8,7 @@ import java.util.Properties;
 public class ReadConfig {
 
     Properties properties;
-    String path = "C:.\\Configuration\\configuration.properties";
+    private static final String path = "C:.\\Configuration\\configuration.properties";
 
     public ReadConfig() throws IOException {
         properties = new Properties();
@@ -21,17 +21,17 @@ public class ReadConfig {
         if (value != null) {
             return value;
         } else {
-            throw new RuntimeException(" Browser not found");
+            throw new RuntimeException(" Browser not configured in properties File");
         }
     }
 
     public String getBaseUrl(){
-        String value = properties.getProperty("baseUrl");
+        String value = properties.getProperty("baseURL");
         if (value!= null){
             return value;
         }
         else {
-            throw new RuntimeException(" Base URL not found");
+            throw new RuntimeException(" Base URL not configured in properties File");
         }
 
     }

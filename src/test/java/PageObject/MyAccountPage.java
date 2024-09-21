@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MyAccountPage {
-    WebDriver driver;
+    private WebDriver driver;
     //  create object of Webdriver
     public MyAccountPage(WebDriver d) {
         driver = d;
@@ -14,33 +14,33 @@ public class MyAccountPage {
     }
 
     //  Identify WebElements
-    @FindBy(id = "email_create")  WebElement EmailAddress;
-    @FindBy(css = "button#SubmitCreate")  WebElement SubmitCreate;
-    @FindBy(id = "email") WebElement RegisteredEmail;
-    @FindBy(id = "passwd") WebElement RegisteredPassword;
-    @FindBy(id = "SubmitLogin")  WebElement SubmitLogin;
-    @FindBy(className = "logout") WebElement SignOut;
+    @FindBy(id = "email_create")  private WebElement registerEmailInputField;
+    @FindBy(css = "button#SubmitCreate")  private WebElement submitRegisterButton;
+    @FindBy(id = "email") private WebElement loginEmail;
+    @FindBy(id = "passwd") private WebElement loginPassword;
+    @FindBy(id = "SubmitLogin")  private WebElement loginButton;
+    @FindBy(className = "logout") private WebElement signOutButton;
 
     //  Perform Actions on WebElements
-    public void setEmailAddress(String emailID) {
-        EmailAddress.sendKeys(emailID);
+    public void setRegisterEmail(String email) {
+        registerEmailInputField.sendKeys(email);
     }
-    public void clickSubmitCreate() {
-        SubmitCreate.click();
-    }
-
-    public void setRegisteredEmail(String emailId) {
-        RegisteredEmail.sendKeys(emailId);
-    }
-    public void setRegisteredPassword(String pswrd) {
-        RegisteredPassword.sendKeys(pswrd);
-    }
-    public void clickSubmitLogin() {
-        SubmitLogin.click();
+    public void clickSubmitRegister() {
+        submitRegisterButton.click();
     }
 
-    public void clickOnSignOut() {
-        SignOut.click();
+    public void setLoginEMail(String email) {
+        loginEmail.sendKeys(email);
+    }
+    public void setLoginPassword(String password) {
+        loginPassword.sendKeys(password);
+    }
+    public void clickLoginButton() {
+        loginButton.click();
+    }
+
+    public void clickSignOut() {
+        signOutButton.click();
     }
 
 }

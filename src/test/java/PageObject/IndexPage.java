@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class IndexPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
 //  create object of Webdriver
     public IndexPage(WebDriver d) {
@@ -16,11 +16,11 @@ public class IndexPage {
     }
 
 //  Identify WebElements
-    @FindBy(css = "a.login")   WebElement SignIn;
+    @FindBy(css = "a.login")   private WebElement signInButton;
 
 //  Perform Actions on WebElements
-    public void clickSignIn(){
-        SignIn.click();
+    public void clickSignInButton(){
+        signInButton.click();
     }
 
 

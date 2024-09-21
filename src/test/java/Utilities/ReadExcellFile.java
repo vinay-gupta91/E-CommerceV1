@@ -15,22 +15,24 @@ import java.io.IOException;
 
 public class ReadExcellFile {
 
-    public static XSSFWorkbook Workbook;
-    public static XSSFSheet worksheet;
-    public static XSSFRow row;
-    public static XSSFCell cell;
-    public static FileInputStream ReadFile;
+    private static XSSFWorkbook Workbook;
+    private static XSSFSheet worksheet;
+    private static XSSFRow row;
+    private static XSSFCell cell;
+    private static FileInputStream ReadFile;
 
-    public static int getRowCount(String Filepath , String SheetName) throws IOException {
-        ReadFile = new FileInputStream(Filepath);
+    private static String FilePath = ".\\TestData\\MyWorkshop.xlsx";
+
+    public static int getRowCount(String SheetName) throws IOException {
+        ReadFile = new FileInputStream(FilePath);
         Workbook = new XSSFWorkbook(ReadFile);
         worksheet = Workbook.getSheet(SheetName);
         int RowCount = worksheet.getLastRowNum();
         Workbook.close();
         return RowCount;
     }
-    public static int getColumnCount(String Filepath , String SheetName) throws IOException {
-        ReadFile = new FileInputStream(Filepath);
+    public static int getColumnCount(String SheetName) throws IOException {
+        ReadFile = new FileInputStream(FilePath);
         Workbook = new XSSFWorkbook(ReadFile);
         worksheet = Workbook.getSheet(SheetName);
         int CellCount = worksheet.getRow(0).getLastCellNum();
@@ -38,13 +40,13 @@ public class ReadExcellFile {
         return CellCount;
     }
 
-    public static String getCellValue(String Filepath, String SheetName, int RowNo, int ColumnNo) throws IOException {
-        ReadFile = new FileInputStream(Filepath);
+    public static String getCellValue(String SheetName, int RowNo, int ColumnNo) throws IOException {
+        ReadFile = new FileInputStream(FilePath);
         Workbook = new XSSFWorkbook(ReadFile);
         worksheet = Workbook.getSheet(SheetName);
         cell= worksheet.getRow(RowNo).getCell(ColumnNo);
-        CellType ct = cell.getCellType();
-        switch (ct){
+        CellType cellType = cell.getCellType();
+        switch (cellType){
             case STRING :
                 return cell.toString();
             case NUMERIC:

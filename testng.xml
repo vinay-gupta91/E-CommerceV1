@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/vinay/Gitlab projects/SeleniumDataDrivenV1/src/test/java/PageObject"><classes/></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/vinay/Gitlab projects/SeleniumDataDrivenV1/src/test/java/TestCases/MyAccountTestDDT.java">
+        <classes>
+            <class name="TestCases.MyAccountTestDDT">
+            </class>
+        </classes>
+    </test>
+</suite>

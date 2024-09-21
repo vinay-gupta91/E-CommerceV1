@@ -13,18 +13,18 @@ import java.time.Duration;
 
 public class BaseClass {
 
-    ReadConfig rConfig;
+    private ReadConfig readConfig;
 
     {
         try {
-            rConfig = new ReadConfig();
+            readConfig = new ReadConfig();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-//    String baeUrl = rConfig.getBaseUrl();                better to create variables in class , where we write method
-    String browser = rConfig.getBrowser();
+    private String baseURL = readConfig.getBaseUrl();               // better to create variables in class , where we write method
+    private String browser = readConfig.getBrowser();
 
     public static WebDriver driver;
 
@@ -41,18 +41,17 @@ public class BaseClass {
                 break;
             default:
                 driver = null;
-                throw new RuntimeException(" Browser not found ");
+                throw new RuntimeException(" Configured Browser ::"+browser+ ":: not supported");
 
         }
+        driver.get(this.baseURL);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
     public void tearDown() throws InterruptedException {
-        driver.close();
         driver.quit();
-        Thread.sleep(2000);
-
     }
 
 }

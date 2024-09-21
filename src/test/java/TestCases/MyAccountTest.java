@@ -12,59 +12,64 @@ import java.io.IOException;
 
 public class MyAccountTest extends BaseClass{
 
-    String BaseUrl = rConfig.getBaseUrl();
 
     @Test(priority = 0)
     public void verifyRegistrationLogin () throws InterruptedException {
-        driver.get(BaseUrl);
-        IndexPage indxPg = new IndexPage(driver);
-        indxPg.clickSignIn();
+
+//      Navigate to Sign-In Page
+        IndexPage indexPage = new IndexPage(driver);
+        indexPage.clickSignInButton();
         Thread.sleep(2000);
 
-        MyAccountPage myAccPg = new MyAccountPage(driver);
-        myAccPg.setEmailAddress("adfdfer@gmail.com");
-        myAccPg.clickSubmitCreate();
+//      Register a new user
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+        myAccountPage.setRegisterEmail("adfdfer013@gmail.com");
+        myAccountPage.clickSubmitRegister();
 
-        AccountCreationPage acCrtPg = new AccountCreationPage(driver);
-        acCrtPg.clickMaleGender();
-        acCrtPg.setFirstName("Abcfn");
-        acCrtPg.setLastName("xyzLN");
-        acCrtPg.setPassWord("qwerty1234");
-        acCrtPg.setDay("20");
-        acCrtPg.setMonth("4");
-        acCrtPg.setYear("1993");
-        acCrtPg.clickSubmitRegister();
+
+//      Fill new user Form
+        AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
+        accountCreationPage.clickMaleGender();
+        accountCreationPage.setFirstName("Abcfn");
+        accountCreationPage.setLastName("xyzLN");
+        accountCreationPage.setPassWord("qwerty1234");
+        accountCreationPage.setDay("20");
+        accountCreationPage.setMonth("4");
+        accountCreationPage.setYear("1993");
+        accountCreationPage.clickSubmitRegister();
         Thread.sleep(2000);
 
-        RegistrationPage rgPg = new RegistrationPage(driver);
-        String ActualUserName= rgPg.getUserName();
-        Assert.assertEquals(ActualUserName, "Abcfn xyzLN" );
+
+
+//      Verify Registration was successful
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        String ActualUserName= registrationPage.getUserName();
+        Assert.assertEquals(ActualUserName, "Abcfn xyzLN" , "Actual Username not matches with Expected Username" );
         Thread.sleep(5000);
 
     }
 
     @Test(priority = 1)
     public void verifyLogin () throws InterruptedException, IOException {
-        driver.get(BaseUrl);
-        IndexPage indxPg = new IndexPage(driver);
-        indxPg.clickSignIn();
+        IndexPage indexPage = new IndexPage(driver);
+        indexPage.clickSignInButton();
         Thread.sleep(2000);
-        MyAccountPage myAccPg = new MyAccountPage(driver);
-        myAccPg.setRegisteredEmail("abc09@gmail.com");
-        myAccPg.setRegisteredPassword("qwerty1234");
-        myAccPg.clickSubmitLogin();
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+        myAccountPage.setLoginEMail("adfdfer013@gmail.com");
+        myAccountPage.setLoginPassword("qwerty1234");
+        myAccountPage.clickLoginButton();
         Thread.sleep(2000);
+        String email = "adfdfer013@gmail.com";
 
-        RegistrationPage rgPg = new RegistrationPage(driver);
-        String ActualUserName= rgPg.getUserName();
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        String ActualUserName= registrationPage.getUserName();
         if (ActualUserName.equals("Abcfn xyzLN")){
-            Assert.assertTrue(true);
+            Assert.assertTrue(true, " login verified for email :"+email);
         }
         else {
             CaptureScreenshotUtil.getScreenshot(driver, "verifyLogin");
-            Assert.assertTrue(false);
+            Assert.assertTrue(false, "Actual Username not matches with Expected Username");
         }
-
 
     }
 
