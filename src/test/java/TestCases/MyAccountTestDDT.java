@@ -26,7 +26,7 @@ public class MyAccountTestDDT extends BaseClass{
         myAccountPage.setRegisterEmail(email);
         myAccountPage.clickSubmitRegister();
 
-
+// Line 2nd added in intellij
 //      Fill new user Form
         AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
         accountCreationPage.clickMaleGender();
