@@ -63,7 +63,7 @@ public class MyAccountTestDDT extends BaseClass{
         }
         else {
             CaptureScreenshotUtil.getScreenshot(driver, "verifyLogin");
-            Assert.assertTrue(false, "Actual Username not matches with Expected Username");
+            Assert.assertTrue(false);
         }
 
     }

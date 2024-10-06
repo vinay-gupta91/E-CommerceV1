@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class BaseClass {
 
-    private ReadConfig readConfig;
+    public ReadConfig readConfig;
 
     {
         try {
@@ -23,7 +23,7 @@ public class BaseClass {
         }
     }
 
-    private String baseURL = readConfig.getBaseUrl();               // better to create variables in class , where we write method
+    private final String baseURL = readConfig.getBaseUrl();               // better to create variables in class , where we write method
     private String browser = readConfig.getBrowser();
 
     public static WebDriver driver;
