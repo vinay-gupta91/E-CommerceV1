@@ -6,8 +6,6 @@ import java.io.IOException;
 
 public class DataProvidersUtil {
 
-    String path = (".\\TestData\\MyWorkshop.xlsx");
-
     @DataProvider(name = "loginData")
     public String[][] getLoginData() throws IOException {
         return loadDataFromSheet("LoginSheet");

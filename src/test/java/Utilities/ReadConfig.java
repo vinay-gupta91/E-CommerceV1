@@ -57,6 +57,7 @@ public class ReadConfig {
         }
     }
 
+
     public String getDefaultProductSearch(){
         String value = properties.getProperty("defaultProductSearch");
         if (value!= null){
