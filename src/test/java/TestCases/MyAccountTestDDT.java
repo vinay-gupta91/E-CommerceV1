@@ -26,6 +26,8 @@ public class MyAccountTestDDT extends BaseClass{
         myAccountPage.setRegisterEmail(email);
         myAccountPage.clickSubmitRegister();
 
+        // Line added in github for c2m
+
 // Line 2nd added in intellij
 //      Fill new user Form
         AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
