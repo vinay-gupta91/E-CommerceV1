@@ -28,6 +28,8 @@ public class MyAccountTest extends BaseClass{
         accountCreationPage = new AccountCreationPage(driver);
         registrationPage = new RegistrationPage(driver);
 
+        // This line added in C1m with github
+        
 //      Navigate to Sign-In Page
         indexPage.clickSignInButton();
         Thread.sleep(2000);
